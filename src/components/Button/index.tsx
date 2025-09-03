@@ -1,10 +1,15 @@
-interface IButton {
-  onClick: () => void;
-  text: string;
-}
+import React from "react";
 
-const Button = (props: IButton) => {
-  return <button onClick={props.onClick}>{props.text}</button>;
+type ButtonProps = {
+  text: string;
+  onClick: () => void;
+  style?: React.CSSProperties;
 };
 
-export default Button;
+export const Button: React.FC<ButtonProps> = ({ text, onClick, style }) => {
+  return (
+    <button onClick={onClick} style={style}>
+      {text}
+    </button>
+  );
+};

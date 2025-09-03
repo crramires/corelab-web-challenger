@@ -1,19 +1,16 @@
-import React, { ReactNode } from "react";
-import styles from "./Card.module.scss";
+import React from "react";
 
-interface ICard {
+type CardProps = {
   title: string;
-  children: ReactNode;
-}
+  children: React.ReactNode;
+  style?: React.CSSProperties;
+};
 
-const Card = (props: ICard) => {
+export const Card: React.FC<CardProps> = ({ title, children, style }) => {
   return (
-    <div className={styles.Card}>
-      <h2>{props.title}</h2>
-
-      <div className={styles.content}>{props.children}</div>
+    <div style={{ border: "1px solid #ccc", borderRadius: "8px", padding: "16px", margin: "8px 0", ...style }}>
+      <h3>{title}</h3>
+      {children}
     </div>
   );
 };
-
-export default Card;
